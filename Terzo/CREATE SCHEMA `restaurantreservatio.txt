@@ -1,0 +1,65 @@
+CREATE SCHEMA `restaurantreservation` ;
+
+
+CREATE TABLE `restaurantreservation`.`customers` (
+  `customerId` INT NOT NULL AUTO_INCREMENT,
+  `fname` VARCHAR(45) NOT NULL,
+  `lname` VARCHAR(45) NOT NULL,
+  `email` VARCHAR(45) NOT NULL,
+  `cellphone` VARCHAR(45) NOT NULL,
+  `intollerance` VARCHAR(45) NULL,
+  PRIMARY KEY (`customerId`));
+
+CREATE TABLE `restaurantreservation`.`restaurants` (
+  `restaurantId` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `address` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`restaurantId`));
+
+CREATE TABLE `restaurantreservation`.`chefs` (
+  `chefId` INT NOT NULL AUTO_INCREMENT,
+  `fname` VARCHAR(45) NOT NULL,
+  `lname` VARCHAR(45) NOT NULL,
+  `email` VARCHAR(45) NOT NULL,
+  `cellphone` VARCHAR(45) NOT NULL,
+  `specialization` VARCHAR(45) NULL,
+  PRIMARY KEY (`chefId`));
+
+CREATE TABLE `restaurantreservation`.`bookings` (
+  `bookingId` INT NOT NULL AUTO_INCREMENT,
+  `note` VARCHAR(45) NULL,
+  `date` DATETIME NOT NULL,
+  `seats` INT NOT NULL,
+  `restaurantId` INT NOT NULL,
+  `customerId` INT NOT NULL,
+  PRIMARY KEY (`bookingId`),
+  INDEX `bookings_restaurant_idx` (`restaurantId` ASC) VISIBLE,
+  INDEX `bookings_customers_idx` (`customerId` ASC) VISIBLE,
+  CONSTRAINT `bookings_restaurants`
+    FOREIGN KEY (`restaurantId`)
+    REFERENCES `restaurantreservation`.`restaurants` (`restaurantId`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `bookings_customers`
+    FOREIGN KEY (`customerId`)
+    REFERENCES `restaurantreservation`.`customers` (`customerId`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+
+INSERT INTO `restaurantreservation`.`chefs` (`fname`, `lname`, `email`, `cellphone`, `specialization`) VALUES ('Mario', 'Rossi', 'mario@rossi.it', '1234567890', 'primi');
+INSERT INTO `restaurantreservation`.`chefs` (`fname`, `lname`, `email`, `cellphone`, `specialization`) VALUES ('Paolo', 'Rossi', 'paolo@rossi.it', '1234567891', 'secondi');
+INSERT INTO `restaurantreservation`.`chefs` (`fname`, `lname`, `email`, `cellphone`, `specialization`) VALUES ('Antonio', 'Rossi', 'antonio@rossi.it', '1234567892', 'dessert');
+INSERT INTO `restaurantreservation`.`chefs` (`fname`, `lname`, `email`, `cellphone`, `specialization`) VALUES ('Maria', 'Rossi', 'maria@rossi.it', '1234567893', 'primi');
+INSERT INTO `restaurantreservation`.`chefs` (`fname`, `lname`, `email`, `cellphone`, `specialization`) VALUES ('Giulia', 'Rossi', 'giulia@rossi.it', '1234567894', 'secondi');
+
+
+INSERT INTO `restaurantreservation`.`restaurants` (`name`, `address`) VALUES ('MangiareBene', 'Via Vecchia 1');
+INSERT INTO `restaurantreservation`.`restaurants` (`name`, `address`) VALUES ('MangiareSano', 'Via Nuova 1');
+
+
+INSERT INTO `restaurantreservation`.`customers` (`fname`, `lname`, `email`, `cellphone`) VALUES ('Andrea', 'Salatino', 'andrea@salatino.it', '1234567891');
+INSERT INTO `restaurantreservation`.`customers` (`fname`, `lname`, `email`, `cellphone`) VALUES ('Roberto', 'Salatino', 'roberto@salatino.it', '1234567892');
+
+INSERT INTO `restaurantreservation`.`bookings` (`note`, `date`, `seats`, `restaurantId`, `customerId`) VALUES ('arriviamo in orario', '2024-05-06T13:00', '4', '1', '1');
+INSERT INTO `restaurantreservation`.`bookings` (`note`, `date`, `seats`, `restaurantId`, `customerId`) VALUES ('siamo in 3', '2024-05-08T15:00', '3', '2', '2');
