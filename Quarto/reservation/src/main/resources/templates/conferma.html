@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://wwww.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conferma</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        body{
+    background-color: aliceblue;
+}
+
+h1. h2{
+    text-align: center;
+    color: black;
+}
+
+form{
+    max-width: 500px;
+    padding: 20px;
+    border-radius: 5px;
+    background-color:azure;
+    margin: 0 auto;
+}
+
+label{
+    display: block;
+    margin: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea,
+select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+    margin-bottom: 15px;
+}
+
+
+.submit-button{
+    background-color: rgb(89, 89, 232);
+    color: white;
+    padding: 16px;
+    margin: 4 px;
+    border-radius: 5px;
+}
+
+.confirmation {
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.confirmation p {
+    margin: 10px 0;
+}
+
+.confirmation .code {
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #333;
+}
+    </style>
+</head>
+<body>
+    <h1>Riepilogo della prenotazione</h1>
+    <div class="confirmation">
+        <p>Numero della prenotazione:</p> 
+        <p class="code" th:text="${codice}"></p><br>
+        <p>Data della prenotazione:</p>
+        <p class="code" th:text="${data}"></p>
+    </div>
+</body>
+</html>

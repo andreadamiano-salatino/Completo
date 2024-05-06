@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prenotazione</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        body{
+    background-color: aliceblue;
+}
+
+h1, h2{
+    text-align: center;
+    color: black;
+}
+
+form{
+    max-width: 500px;
+    padding: 20px;
+    border-radius: 5px;
+    background-color:azure;
+    margin: 0 auto;
+}
+
+label{
+    display: block;
+    margin: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea,
+select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+    margin-bottom: 15px;
+}
+
+
+.submit-button{
+    background-color: rgb(89, 89, 232);
+    color: white;
+    padding: 16px;
+    margin: 4 px;
+    border-radius: 5px;
+}
+
+.confirmation {
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.confirmation p {
+    margin: 10px 0;
+}
+
+.confirmation .code {
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #333;
+}
+    </style>
+</head>
+<body>
+    <h1>Prenotazione</h1>
+    <h2>Complete il form con i tuoi dati e clicca sul tasto in basso</h2>
+    <form action="http://localhost:8080/booking" method="POST">
+        <label for="fname">Nome:</label>
+        <input type="text" name="fname" id="fname" maxlength="40" required><br>
+
+        <label for="lname">Cognome:</label>
+        <input type="text" name="lname" id="lname" maxlength="40" required><br>
+
+        <label for="email">Email:</label>
+        <input type="text" name="email" id="email" maxlength="40" required><br>
+
+        <label for="phone">Numero di telefono:</label>
+        <input type="tel" name="phone" id="phone" pattern="[0-9]{10}" required><br>
+
+        <label for="note">Note:</label>
+        <input type="text" name="note" id="note" maxlength="200"><br>
+
+        <label for="seats">Coperti:</label>
+        <input type="number" name="seats" id="seats" min="1" max="200" required><br>
+
+        <label for="restaurant">Ristorante:</label>
+        <input type="text" name="restaurant" id="restaurant" maxlength="40" required><br>
+
+        <label>Range Date:</label><br>
+        <input type="date" name="start-date" id="start-date" min="2024-05-06" max="2024-05-31" required><br><br>
+        <input type="date" name="end-date" id="end-date" min="2024-05-08" max="2024-05-31" required><br><br>
+        
+        <input type="submit" value="Prenota" class="submit-button">
+    </form>
+</body>
+</html>

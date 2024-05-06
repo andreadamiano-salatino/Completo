@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prenotazione</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h1>Prenotazione</h1>
+    <h2>Complet il form e clicca sul tasto in basso per proseguire</h2>
+    <form action="/date.html">
+        <label for="fname">Nome:</label>
+        <input type="text" name="fname" id="fname" maxlength="40" required><br>
+
+        <label for="lname">Cognome:</label>
+        <input type="text" name="lname" id="lname" maxlength="40" required><br>
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" maxlength="40" required><br>
+
+        <label for="phone">Numero di telefono:</label>
+        <input type="tel" name="phone" id="phone" pattern="[0-9]{10}" required><br>
+
+        <label for="note">Note:</label>
+        <input type="text" name="note" id="note" maxlength="200"><br>
+
+        <label for="seats">Coperti:</label>
+        <input type="number" name="seats" id="seats" min="1" max="200" required><br>
+
+        <label for="restaurant">Ristorante:</label>
+        <input type="text" name="restaurant" id="restaurnat" maxlength="40" required><br>
+
+        <label>Range Date:</label><br>
+        <input type="date" name="start-date" id="start-date" min="2024-05-06" max="2024-05-31" required><br><br>
+        <input type="date" name="end-date" id="end-date" min="2024-05-08" max="2024-05-31" required><br><br>
+        
+        <input type="submit" value="Prenota" class="submit-button">
+    </form>
+</body>
+</html>

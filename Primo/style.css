@@ -1,0 +1,65 @@
+body{
+    background-color: rgb(247, 247, 247);
+}
+
+h1, h2{
+    text-align:center;
+    color: black;
+}
+
+form{
+    max-width: 500px;
+    padding: 20px;
+    border-radius: 5px;
+    background-color:rgb(240, 240, 240);
+    margin: 0 auto;
+}
+
+label{
+    display: block;
+    margin: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea,
+select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+    margin-bottom: 15px;
+}
+
+
+.submit-button{
+    background-color: rgb(1, 182, 46);
+    color: white;
+    padding: 16px;
+    margin: 4 px;
+    border-radius: 5px;
+}
+
+.confirmation {
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+    background-color: rgb(240, 240, 240);
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.confirmation p {
+    margin: 10px 0;
+}
+
+.confirmation .code {
+    font-weight: bold;
+    font-size: 2rem;
+    color: #333;
+}
