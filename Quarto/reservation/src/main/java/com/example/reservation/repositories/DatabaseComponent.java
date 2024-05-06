@@ -32,13 +32,13 @@ public class DatabaseComponent {
 
 
     public int GetRestaurantId(String restaurantName) throws SQLException {
-        int restaurantId = 0;
+        int restaurantId = -1;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         try{
             String sql = "SELECT restaurantId FROM restaurantreservation.restaurants WHERE restaurants.name = ?";
             connection = StartConnection();
-            preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, restaurantName);
 
             resultSet = preparedStatement.executeQuery();
@@ -51,22 +51,30 @@ public class DatabaseComponent {
             e.printStackTrace();
         }
         finally {
-            if(preparedStatement != null)
+            if(preparedStatement != null) {
                 resultSet.close();
                 preparedStatement.close();
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
         }
 
         return restaurantId;
     }
 
     public int GetCustomerId(String email) throws SQLException {
-        int customerId = 0;
+        int customerId = -1;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         try{
             String sql = "SELECT customerId FROM restaurantreservation.customers WHERE customers.email = ? ";
             connection = StartConnection();
-            preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, email);
 
             resultSet = preparedStatement.executeQuery();
@@ -102,7 +110,7 @@ public class DatabaseComponent {
         try {
             String sql = "SELECT * " +
                     "FROM bookings " +
-                    "JOIN restaurants ON bookings.restaurantId = restaurants.restaurantId \n" +
+                    "JOIN restaurants ON bookings.restaurantId = restaurants.restaurantId " +
                     "WHERE bookings.date BETWEEN ? AND ?" +
                     "AND restaurants.name = ?";
             connection = StartConnection();
@@ -120,7 +128,7 @@ public class DatabaseComponent {
 
             dates = new ArrayList<>();
 
-            List<LocalDateTime> bookedDates = new ArrayList<LocalDateTime>();
+            List<LocalDateTime> bookedDates = new ArrayList<>();
             while (resultSet.next()) {
                 String dataStr = resultSet.getString("date");
                 LocalDateTime data = LocalDateTime.parse(dataStr, formatter);
@@ -205,7 +213,7 @@ public class DatabaseComponent {
     }
 
     public int insertCustomerAndGetId(Customer customer) throws SQLException {
-        int idInserito = -1;
+        int customerId = -1;
         PreparedStatement preparedStatement = null;
         try {
             String sql = "INSERT INTO restaurantreservation.customers (fname, lname, email, cellphone, intollerance) " +
@@ -227,7 +235,7 @@ public class DatabaseComponent {
 
             try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
-                    idInserito = generatedKeys.getInt(1);
+                    customerId = generatedKeys.getInt(1);
                 } else {
                     throw new SQLException("Creating customer failed, no ID obtained.");
                 }
@@ -247,6 +255,6 @@ public class DatabaseComponent {
                 }
             }
         }
-        return idInserito;
+        return customerId;
     }
 }

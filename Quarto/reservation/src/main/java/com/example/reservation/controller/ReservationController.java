@@ -25,8 +25,8 @@ public class ReservationController {
 
     @GetMapping("/")
     public ModelAndView welcome(){
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("prenotazione");
+        ModelAndView modelAndView = new ModelAndView("prenotazione");
+        //modelAndView.setViewName("prenotazione");
         return  modelAndView;
     }
 
