@@ -15,9 +15,9 @@ import java.util.Set;
 @Component
 public class DatabaseComponent {
 
-    Connection connection;
+    private Connection connection;
 
-    public Connection StartConnection(){
+    private Connection StartConnection(){
         String url = "jdbc:mysql://localhost:3306/restaurantreservation";
         String username = "root";
         String password = "LocalDb24!";
