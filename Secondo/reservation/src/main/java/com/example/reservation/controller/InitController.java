@@ -13,7 +13,7 @@ import java.util.Objects;
 @RestController
 public class InitController {
     @GetMapping("/init")
-    public List<Chef> init(){
+    public ArrayList init(){
         List<Chef> chefs = new ArrayList<Chef>();
         Chef chef1 = new Chef("Mario", "Rossi", "mario@rossi.it", "1234567890", "primi");
         Chef chef2 = new Chef("Paolo", "Rossi", "paolo@rossi.it", "1234567891", "secondi");
@@ -34,6 +34,16 @@ public class InitController {
         restaurants.add(restaurant1);
         restaurants.add(restaurant2);
 
-        return chefs;
+        ArrayList list = new ArrayList<>();
+        list.add(chef1);
+        list.add(chef2);
+        list.add(chef3);
+        list.add(chef4);
+        list.add(chef5);
+
+        list.add(restaurant1);
+        list.add(restaurant2);
+
+        return list;
     }
 }

@@ -5,10 +5,8 @@ import com.example.reservation.models.Customer;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.sound.sampled.FloatControl;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -39,10 +37,10 @@ public class ReservationController {
         booking.setNote(note);
         booking.setSeats(seats);
 
-        ArrayList<LocalDateTime> availableDates = new ArrayList<LocalDateTime>();
-        LocalDateTime date1 = startDate.plusHours(13);
-        LocalDateTime date2 = startDate.plusHours(15);
-        LocalDateTime date3 = startDate.plusHours(17);
+        ArrayList<LocalDateTime> availableDates = new ArrayList<>();
+        LocalDateTime date1 = startDate.plusHours(2);
+        LocalDateTime date2 = startDate.plusHours(4);
+        LocalDateTime date3 = startDate.plusHours(6);
 
         availableDates.add(date1);
         availableDates.add(date2);
@@ -56,6 +54,6 @@ public class ReservationController {
         LocalDateTime date = LocalDateTime.parse(userFormData.get("date").get(0));
         booking.setDate(date);
 
-        return "Codice di prenotazione 123456789C0 "+date.toString();
+        return "Codice di prenotazione 123456789C0 \n"+ "Data di prenotazione " + date.toString();
     }
 }
