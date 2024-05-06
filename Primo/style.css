@@ -4,7 +4,6 @@ body{
 
 h1, h2{
     text-align:center;
-    color: black;
 }
 
 form{
@@ -12,7 +11,7 @@ form{
     padding: 20px;
     border-radius: 5px;
     background-color:rgb(240, 240, 240);
-    margin: 0 auto;
+    margin: auto;
 }
 
 label{
@@ -40,7 +39,6 @@ select {
     background-color: rgb(1, 182, 46);
     color: white;
     padding: 16px;
-    margin: 4 px;
     border-radius: 5px;
 }
 
