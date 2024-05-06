@@ -83,11 +83,11 @@ public class ReservationController {
         booking.setCustomerId(customerId);
 
         int bookingId = db.insertBookingAndGetId(booking);
-        LocalDateTime data = booking.getDate();
+        //LocalDateTime data = booking.getDate();
 
         ModelAndView modelAndView = new ModelAndView("conferma");
         modelAndView.addObject("codice", bookingId);
-        modelAndView.addObject("data", data);
+        modelAndView.addObject("data", date);
         return modelAndView;
     }
 }
